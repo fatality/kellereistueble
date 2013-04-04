@@ -58,7 +58,7 @@ if (!isset($_COOKIE[session_name()])) {
           media="all" />
     <!-- Metatags -->
     <meta name="description" content="Das Kellereistüble in Lindau (Bodensee) bietet Ferienwohnungen, Einzel- &amp; Doppelzimmer in naher Lage zur Insel Lindau." />
-    <meta name="keywords" content="Kellereistüble, Lindau, Bodensee, Pension, Garni, Ferienwohnungen, Einzelzimmer, Doppelzimmer, Dreibettzimmer, Komfortzimmer" />
+    <meta name="keywords" content="Hotel ,Ferien, Insel Mainau, Pfänder, Bregenz, Meersburg, Friedrichhafen, Wasserburg, Zeppelin, Hagnau, Schweiz, Österreich, Lichtenstein, Familienurlaub, Frühstück, Nonnenhorn, Lindau Schönau, Säntis, Urlaub, Seehafen" />
     <!-- JavaScript -->
     <script type="text/javascript">
         var _gaq = _gaq || [];
