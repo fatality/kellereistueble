@@ -1,0 +1,199 @@
+body {
+    font-family: 'Droid Sans', Arial, Tahoma, Verdana, sans-serif;
+    font-size: 10px;
+    background-color: #859CB3;
+    text-align: center; /* IE6 Bugfix */
+    line-height: 1.5;
+}
+
+#page {
+    text-align: left;
+    width: 920px;
+    margin: 40px auto;
+    font-size: 1.1em;
+}
+
+#header {
+    background-image: url(../images/backgroundtop.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 138px;
+    position: relative;
+}
+
+#header h1#logo a {
+    text-indent: -20000px;
+    background-image: url(../images/logo.jpg);
+    width: 410px;
+    height: 128px;
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    outline: 0 none;
+}
+
+#header .banner {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+}
+
+#header #navigation {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+}
+
+#header #navigation ul li {
+    float: left;
+}
+
+#header #navigation ul li a {
+    color: #333333;
+    font-weight: bold;
+    padding: 3px 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: -1px;
+}
+
+#header #navigation ul li a:hover,
+#header #navigation ul li a.active {
+    background-color: #EEEEEE;
+    border-bottom: 3px solid #5D3600;
+    color: #000000;
+}
+
+#wrapper {
+    background-image: url(../images/backgroundmiddle.jpg);
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-color: #FFFFFF;
+    border-top: 1px dotted #BBBBBB;
+}
+
+#wrapper #sidebar {
+    float: left;
+    padding: 4%;
+    width: 24%;
+}
+
+#wrapper #sidebar h3 {
+    color: #5D3600;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#wrapper #sidebar p,
+#wrapper #sidebar address,
+#wrapper #sidebar ul {
+    margin: 0.9em 0;
+}
+
+#wrapper #sidebar a {
+    color: #5D3600;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#wrapper #sidebar a:hover {
+    color: #000;
+}
+
+#wrapper #content {
+    border-left: 1px dotted #BBBBBB;
+    float: left;
+    padding: 4%;
+    width: 59%;
+}
+
+#wrapper #content ul {
+    list-style-type: disc;
+    padding-left: 15px;
+}
+
+#wrapper #content p,
+#wrapper #content h2,
+#wrapper #content ul {
+    margin: 0.9em 0;
+}
+
+#wrapper #content h2 {
+    color: #5D3600;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+#wrapper #content h3 {
+    color: #5D3600;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 2em;
+}
+
+#wrapper #content h3 a {
+    color: #5D3600;
+    text-decoration: none;
+}
+
+#wrapper #content .whg {
+    float: left;
+    width: 270px;
+    margin-bottom: 30px;
+}
+
+#wrapper #content .whg img {
+    float: left;
+    margin-right: 10px;
+}
+
+#wrapper #content .whg h3 {
+    margin-top: 0;
+}
+
+#wrapper #content .whg ul {
+    list-style-type: none;
+}
+
+#wrapper #content table.price {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#wrapper #content table.price td {
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+#wrapper #content .clear {
+    clear: both;
+}
+
+#wrapper #footer {
+    border-top: 1px dotted #BBBBBB;
+    clear: both;
+}
+
+#wrapper #footer p {
+    text-align: right;
+    padding: 15px 10px 0;
+}
+
+#wrapper #footer p a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+#wrapper #footer p a:hover {
+    color: #5d3600;
+}
+
+#footnote {
+    background-image: url(../images/backgroundbottom.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 15px;
+}
