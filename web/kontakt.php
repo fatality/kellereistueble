@@ -1,42 +1,3 @@
-<?php
-// Kontaktformular.org
-
-// Einstellungen
-// Ihre E-Mailadresse
-$sys_webmaster = 'kontakt@kellereistueble.de';
-
-// Absender || Muster(From: NAME <EMAIL>) // Beispiel: 'From: Max Mustermann <max@musterdomain.tld>'
-$sys_absender = 'From: Kontaktformular <kontakt@kellereistueble.de>';
-
-// Betreff
-$sys_betreff = 'Kontaktformular-Anfrage';
-
-// Nachrichten
-// Nicht alle Felder ausgefüllt
-$err[0] = 'Fehler, Sie haben nicht alle Felder ausgefüllt:';
-// Kein Name eingegeben
-$err[1] = '<br />- Ungültiger Name';
-// Ungültige E-Mailadresse eingegeben
-$err[2] = '<br />- Ungültiger E-Mailadresse';
-// Kein Betreff eingegeben
-$err[3] = '<br />- Ungültiger Betreff';
-// Keine Nachricht eingegeben
-$err[4] = '<br />- Ungültige Nachricht';
-// Ungültiger Sicherheitscode
-$err[5] = '<br />- Ungültiger Sicherheitscode';
-// Alle Felder sind OK
-$ok = 'Vielen Dank für Ihre Nachricht, wir werden Sie demnächst bearbeiten!<br /><br />';
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-session_start();
-$sessionstringnew = null;
-$sessionstringadd = null;
-if (!isset($_COOKIE[session_name()])) {
-    $sessionstringnew = '?' . session_name() . "=" . session_id();
-    $sessionstringadd = '&' . session_name() . "=" . session_id();
-}
-?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -119,103 +80,50 @@ if (!isset($_COOKIE[session_name()])) {
                 <h2>
                     Kellereistüble Lindau kontaktieren
                 </h2>
-                <form name="kontaktformular" action="<?=$_SERVER['PHP_SELF'].$sessionstringnew; ?>" method="post">
-        <table style="width:500px">
-          <tr>
-        <td colspan="2">
-          <?php
-            $name = trim(strip_tags($_POST['name']));
-            $email = trim(strip_tags($_POST['email']));
-            $betreff = trim(strip_tags($_POST['betreff']));
-            $nachricht = trim(strip_tags($_POST['nachricht']));
-            $homepage = trim(strip_tags($_POST['homepage']));
-            if (isset($_POST['submit'])) {
-          $ip = $_SERVER['REMOTE_ADDR'];
-          $host = gethostbyaddr($ip);
-          $timestamp = time ();
-          $datum = date ("d.m.Y", $timestamp);
-          $uhrzeit = date ("H:i:s", $timestamp);
-          $msg = '<span style="color:red">' . $err[0];
-          if ($name == '') {
-            $msg .= $err[1];
-            $error = true;
-          }
-          if (!ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,6})$", $email)) {
-            $msg .= $err[2];
-            $error = true;
-          }
-          if ($betreff == '') {
-            $msg .= $err[3];
-            $error = true;
-          }
-          if ($nachricht == '') {
-            $msg .= $err[4];
-            $error = true;
-          }
-          if (sha1(trim(strip_tags(strtoupper($_POST['code'])))) != $_SESSION['P91Captcha_code']) {
-            $msg .= $err[5];
-            $error = true;
-          }
-          $msg .= '</span><br /><br />';
-          if ($error != true) {
-            $sys_nachricht = "-- Kontakformularanfrage --\n\nBetreff: $betreff\nName: $name\nE-Mail: $email\nHomepage: $homepage\n\nNachricht:\n$nachricht\n\nIP: $ip\nHost: $host\nGesendet am $datum um $uhrzeit.";
-            mail($sys_webmaster, $sys_betreff, $sys_nachricht, $sys_absender);
-            $name = null;
-            $betreff = null;
-            $email = null;
-            $nachricht = null;
-            $homepage = null;
-              echo $ok;
-        } else {
-          echo $msg;
-        }
-          }
-        ?></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><strong>Name:</strong></td>
-        <td><input name="name" type="text" value="<?=$name; ?>" size="40" maxlength="100"></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><p><strong>E-Mail Adresse:</strong><br></td>
-        <td><input name="email" type="text" id="email" value="<?=$email; ?>" size="40" maxlength="100"></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><strong>Betreff:</strong></td>
-        <td><input name="betreff" type="text" id="betreff" value="<?=$betreff; ?>" size="40" maxlength="50"></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><strong>Homepage (Optional):</strong></td>
-        <td><input name="homepage" type="text" id="homepage" value="<?=$homepage; ?>" size="40" maxlength="50"></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><strong>Nachricht:</strong></td>
-        <td><textarea name="nachricht" cols="40" rows="10" wrap="VIRTUAL" id="nachricht"><?=$nachricht; ?></textarea></td>
-          </tr>
-          <tr>
-            <td style="width:150px">&nbsp;</td>
-        <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td style="width:150px"><strong>Sicherheitscode:</strong></td>
-        <td><img src="captcha_form.php<?=$sessionstringnew;?>" alt="Captcha" border="1" id="P91Captcha" />
-            <br />
-        <a href="javascript:P91Captcha('<?=$sessionstringadd;?>');" class="preis">Neuer Code?</a></td>
-          </tr>
-          <tr>
-        <td style="width:150px"><strong>Sicherheitscode-Eingabe:</strong></td>
-        <td><input name="code" type="text" id="code" size="20" maxlength="50" /></td>
-          </tr>
-          <tr>
-        <td style="width:150px">&nbsp;</td>
-        <td>&nbsp;</td>
-          </tr>
-          <tr>
-        <td style="width:150px">&nbsp;</td>
-        <td><input type="submit" value="Abschicken" name="submit"></td>
-          </tr>
-        </table>
-      </form>
+                <form name="kontaktformular" action="verify.php" method="post">
+                    <?php
+                        require_once('recaptchalib.php');
+                        $publickey = "6LePmeESAAAAAD3WXKCrhuCzFTo5h_1cMZdTweqO";
+                    ?>
+                    <table class="contact" style="width:500px">
+                        <tr>
+                            <td style="width:150px"><strong>Name:</strong></td>
+                            <td><input name="name" type="text" value="" size="40" maxlength="100"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><p><strong>E-Mail Adresse:</strong><br></td>
+                            <td><input name="email" type="text" id="email" value="" size="40" maxlength="100"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><strong>Betreff:</strong></td>
+                            <td><input name="betreff" type="text" id="betreff" value="" size="40" maxlength="50"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><strong>Homepage (Optional):</strong></td>
+                            <td><input name="homepage" type="text" id="homepage" value="" size="40" maxlength="50"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><strong>Nachricht:</strong></td>
+                            <td><textarea name="nachricht" cols="40" rows="10" wrap="VIRTUAL" id="nachricht"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><strong>Sicherheitscode:</strong></td>
+                            <td><?php echo recaptcha_get_html($publickey); ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width:150px">&nbsp;</td>
+                            <td><input type="submit" value="Abschicken" name="submit"></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
             <div id="footer">
                 <p>
