@@ -226,7 +226,7 @@ if (isset($_POST['submit']))
             </div>
             <div id="footer">
                 <p>
-                    Copyright (c) 2011 <strong>Kellereistüble Pension Garni</strong>. Design + Code: <a href="http://www.gironimo.org/" title="gironimo.org - Aktuelle Artikel über Linux, IT &amp; Internet">http://www.gironimo.org/</a>
+                    Copyright (c) 2013 <strong>Kellereistüble Pension Garni</strong>. Design + Code: <a href="http://www.gironimo.org/" title="gironimo.org - Aktuelle Artikel über Linux, IT &amp; Internet">http://www.gironimo.org/</a>
                 </p>
             </div>
         </div>
